@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body { font-family: Arial; margin: 0; padding: 10px; }
+
+/* scroll */
+.tree-container {
+  overflow-x: auto;
+}
+
+/* layout wrapper */
+.tree {
+  display: inline-block;
+  padding: 20px;
+}
+
+/* couple */
+.couple {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* spouse line */
+.spouse-line {
+  width: 30px;
+  height: 2px;
+  background: black;
+}
+
+/* vertical line */
+.down-line {
+  width: 2px;
+  height: 20px;
+  background: black;
+  margin: auto;
+}
+
+/* children row */
+.children {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-top: 20px;
+}
+
+/* horizontal sibling connector */
+.children::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: black;
+}
+
+/* child node */
+.child {
+  margin: 0 15px;
+  text-align: center;
+  position: relative;
+}
+
+/* vertical to each child */
+.child::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: black;
+}
+
+/* person card */
+.person {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 8px;
+  background: #fff;
+  width: 110px;
+}
+
+.person img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+select {
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* bio modal */
+#bioBox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: white;
+  padding: 10px;
+}
+
+#bioContent {
+  height: 70%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow: auto;
+}
+
+/* mobile */
+@media(max-width:600px){
+  .person { width: 90px; }
+  .person img { width: 50px; height: 50px; }
+}
+</style>
+</head>
+
+<body>
+
+<h2>Family Tree</h2>
+
+<div class="tree-container">
+<div class="tree">
+
+<!-- ROOT -->
+<div class="couple">
+  <div class="person"><img src=".\Images\TataPatiPhoto.jfif"><p>Thangamma & Venkatachala Iyengar</p> <!--ss <select onchange="handle(this,'Thangamma')">
+<option>Select</option><option value="yt">Family Story</option><option value="bio">Autobiography</option></select> --> </div>
+ <!--ss <div class="spouse-line"></div>
+  <div class="person"><img src="https://via.placeholder.com/60"><p>Venkatachala</p><select onchange="handle(this,'Venkatachala')"><option>Select</option><option value="yt">Family Story</option><option value="bio">Autobiography</option></select></div> -->
+</div>
+
+<div class="down-line"></div>
+
+<!-- LEVEL 1 CHILDREN -->
+<div class="children">
+
+<!-- SEENU -->
+<div class="child">
+  <div class="couple">
+    <div class="person"><img src=".\images\Seenu.jfif"><p>Seenu</p>
+	<select onchange="handle(this,'Seenu')"><option>Select</option><option value="Seenu">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+
+
+
+    <div class="spouse-line"></div>
+    <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Nagarathna\photo.jfif"><p>Nagarathna</p>
+	<select onchange="handle(this,'Nagarathna')"><option>Select</option><option value="Nagarathna">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+  </div>
+
+  <div class="down-line"></div>
+
+  <div class="children">
+    <div class="child">
+      <div class="couple">
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Mytheli\photo.jfif"><p>Mytheli</p>
+	<select onchange="handle(this,'Mytheli')"><option>Select</option><option value="Mytheli">Family Story</option><option value="bio">Autobiography</option></select>
+
+</select></div>
+        <div class="spouse-line"></div>
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Pranav\photo.jfif"><p>Pranav</p>
+	<select onchange="handle(this,'Pranav')"><option>Select</option><option value="Pranav">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+      </div>
+
+      <div class="down-line"></div>
+
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Meena\photo.jfif"><p>Meena</p>
+	<select onchange="handle(this,'Meena')"><option>Select</option><option value="Meena">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Savitha\photo.jfif"><p>Savitha</p>
+	<select onchange="handle(this,'Savitha')"><option>Select</option><option value="Savitha">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MACHI -->
+<div class="child">
+  <div class="couple">
+    <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Machi\photo.jfif"><p>Machi</p>
+	<select onchange="handle(this,'Machi')"><option>Select</option><option value="Machi">Family Story</option><option value="bio">Autobiography</option></select>
+</select>
+</div>
+    <div class="spouse-line"></div>
+    <div class="person"><p>Attambi</p></div>
+  </div>
+
+  <div class="down-line"></div>
+
+  <div class="children">
+    <div class="child">
+      <div class="couple">
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Suma\photo.jfif"><p>Suma</p>
+	<select onchange="handle(this,'Suma')"><option>Select</option><option value="Suma">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+        <div class="spouse-line"></div>
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Srinath\photo.jfif"><p>Srinath</p>
+	<select onchange="handle(this,'Srinath')"><option>Select</option><option value="Srinath">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+      </div>
+
+      <div class="down-line"></div>
+
+      <div class="children">
+        <div class="child">
+          <div class="couple">
+            <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Vikas\photo.jfif"><p>Vikas</p>
+	<select onchange="handle(this,'Vikas')"><option>Select</option><option value="Vikas">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+            <div class="spouse-line"></div>
+            <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Carissa\photo.jfif"><p>Carissa</p>
+	<select onchange="handle(this,'Carissa')"><option>Select</option><option value="Carissa">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+          </div>
+        </div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Meera\photo.jfif"><p>Meera</p>
+	<select onchange="handle(this,'Meera')"><option>Select</option><option value="Meera">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GUNDU -->
+<div class="child">
+  <div class="couple">
+    <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Gundu\photo.jfif"><p>Gundu</p>
+	<select onchange="handle(this,'Gundu')"><option>Select</option><option value="Gundu">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+    <div class="spouse-line"></div>
+    <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Veda\photo.jfif"><p>Veda</p>
+	<select onchange="handle(this,'Veda')"><option>Select</option><option value="Veda">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+  </div>
+
+  <div class="down-line"></div>
+
+  <div class="children">
+
+    <div class="child">
+      <div class="couple">
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Mukund\photo.jfif"><p>Mukund</p>
+	<select onchange="handle(this,'Mukund')"><option>Select</option><option value="Mukund">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+        <div class="spouse-line"></div>
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Deepika\photo.jfif"><p>Deepika</p>
+	<select onchange="handle(this,'Deepika')"><option>Select</option><option value="Deepika">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+      </div>
+
+      <div class="down-line"></div>
+
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Ajay\photo.jfif"><p>Ajay</p>
+	<select onchange="handle(this,'Ajay')"><option>Select</option><option value="Ajay">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Anjali\photo.jfif"><p>Anjali</p>
+	<select onchange="handle(this,'Anjali')"><option>Select</option><option value="Anjali">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Arjun\photo.jfif"><p>Arjun</p>
+	<select onchange="handle(this,'Arjun')"><option>Select</option><option value="Arjun">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+
+    <div class="child">
+      <div class="couple">
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Anita\photo.jfif"><p>Anita</p>
+	<select onchange="handle(this,'Anita')"><option>Select</option><option value="Anita">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+        <div class="spouse-line"></div>
+        <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Mark\photo.jfif"><p>Mark</p>
+	<select onchange="handle(this,'Mark')"><option>Select</option><option value="Mark">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+      </div>
+
+      <div class="down-line"></div>
+
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Jayan\photo.jfif"><p>Jayan</p>
+	<select onchange="handle(this,'Jayan')"><option>Select</option><option value="Jayan">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Francis\photo.jfif"><p>Francis</p>
+	<select onchange="handle(this,'Francis')"><option>Select</option><option value="Francis">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HARI -->
+<div class="child">
+  <div class="couple">
+    <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Hari\photo.jfif"><p>Hari</p>
+	<select onchange="handle(this,'Hari')"><option>Select</option><option value="Hari">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+    <div class="spouse-line"></div>
+    <div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Mayura\photo.jfif"><p>Mayura</p>
+	<select onchange="handle(this,'Mayura')"><option>Select</option><option value="Mayura">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+  </div>
+
+  <div class="down-line"></div>
+
+  <div class="children">
+
+    <div class="child">
+      <div class="couple"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Roopa\photo.jfif"><p>Roopa</p>
+	<select onchange="handle(this,'Roopa')"><option>Select</option><option value="Roopa">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div><div class="spouse-line"></div><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Deepak\photo.jfif"><p>Deepak</p>
+	<select onchange="handle(this,'Deepak')"><option>Select</option><option value="Deepak">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      <div class="down-line"></div>
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Tanay\photo.jfif"><p>Tanay</p>
+	<select onchange="handle(this,'Tanay')"><option>Select</option><option value="Tanay">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Tanuja\photo.jfif"><p>Tanuja</p>
+	<select onchange="handle(this,'Tanuja')"><option>Select</option><option value="Tanuja">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+
+    <div class="child">
+      <div class="couple">
+
+<div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Ramya\photo.jfif"><p>Ramya</p>
+	<select onchange="handle(this,'Ramya')"><option>Select</option><option value="Ramya">Family Story</option><option value="bio">Autobiography</option></select>
+</select>
+
+
+</div><div class="spouse-line"></div><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Parikshit\photo.jfif"><p>Parikshit</p>
+	<select onchange="handle(this,'Parikshit')"><option>Select</option><option value="Parikshit">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      <div class="down-line"></div>
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Prateek\photo.jfif"><p>Prateek</p>
+	<select onchange="handle(this,'Prateek')"><option>Select</option><option value="Prateek">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Praneet\photo.jfif"><p>Praneet</p>
+	<select onchange="handle(this,'Praneet')"><option>Select</option><option value="Praneet">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+
+    <div class="child">
+      <div class="couple"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Raksha\photo.jfif"><p>Raksha</p>
+	<select onchange="handle(this,'Raksha')"><option>Select</option><option value="Raksha">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div><div class="spouse-line"></div><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Simha\photo.jfif"><p>Simha</p>
+	<select onchange="handle(this,'Simha')"><option>Select</option><option value="Simha">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      <div class="down-line"></div>
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Ananya\photo.jfif"><p>Ananya</p>
+	<select onchange="handle(this,'Ananya')"><option>Select</option><option value="Ananya">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MALINI -->
+<div class="child">
+  <div class="couple"><div class="person"><p>Malini</p></div><div class="spouse-line"></div><div class="person"><p>Sheshadri</p></div></div>
+  <div class="down-line"></div>
+  <div class="children">
+    <div class="child">
+      <div class="couple"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Nibha\photo.jfif"><p>Nibha</p>
+	<select onchange="handle(this,'Nibha')"><option>Select</option><option value="Nibha">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div><div class="spouse-line"></div><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Madhu\photo.jfif"><p>Madhu</p>
+	<select onchange="handle(this,'Madhu')"><option>Select</option><option value="Madhu">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      <div class="down-line"></div>
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Dakshit\photo.jfif"><p>Dakshit</p>
+	<select onchange="handle(this,'Dakshit')"><option>Select</option><option value="Dakshit">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Hoovishka\photo.jfif"><p>Hoovishka</p>
+	<select onchange="handle(this,'Hoovishka')"><option>Select</option><option value="Hoovishka">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUTTU -->
+<div class="child">
+  <div class="couple">
+    <div class="person"><img src=".\Images\Puttu.jfif"><p>Puttu</p>
+	<select onchange="handle(this,'Puttu')"><option>Select</option><option value="Puttu">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div>
+
+<div class="spouse-line"></div><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Sandhya\photo.jfif"><p>Sandhya</p>
+	<select onchange="handle(this,'Sandhya')"><option>Select</option><option value="Sandhya">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+  <div class="down-line"></div>
+  <div class="children">
+
+    <div class="child">
+      <div class="couple"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Sreeya\photo.jfif"><p>Sreeya</p>
+	<select onchange="handle(this,'Sreeya')"><option>Select</option><option value="Sreeya">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div><div class="spouse-line"></div><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Sam\photo.jfif"><p>Sam</p>
+	<select onchange="handle(this,'Sam')"><option>Select</option><option value="Sam">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      <div class="down-line"></div>
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Nikhil\photo.jfif"><p>Nikhil</p>
+	<select onchange="handle(this,'Nikhil')"><option>Select</option><option value="Nikhil">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Varoon\photo.jfif"><p>Varoon</p>
+	<select onchange="handle(this,'Varoon')"><option>Select</option><option value="Varoon">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+
+    <div class="child">
+      <div class="couple"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Shruthi\photo.jfif"><p>Shruthi</p>
+	<select onchange="handle(this,'Shruthi')"><option>Select</option><option value="Shruthi">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div><div class="spouse-line"></div><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Simhan\photo.jfif"><p>Simhan</p>
+	<select onchange="handle(this,'Simhan')"><option>Select</option><option value="Simhan">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      <div class="down-line"></div>
+      <div class="children">
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Aditya\photo.jfif"><p>Aditya</p>
+	<select onchange="handle(this,'Aditya')"><option>Select</option><option value="Aditya">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+        <div class="child"><div class="person"><img src="C:\Users\ssree\OneDrive\Documents\Sreeya\Family history\Abhinav\photo.jfif"><p>Abhinav</p>
+	<select onchange="handle(this,'Abhinav')"><option>Select</option><option value="Abhinav">Family Story</option><option value="bio">Autobiography</option></select>
+</select></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- BIO PANEL -->
+<div id="bioBox">
+<h3 id="bioTitle"></h3>
+<div id="bioContent" contenteditable="true"></div>
+<br>
+<button onclick="saveBio()">Save</button>
+<button onclick="closeBio()">Close</button>
+</div>
+
+<script>
+let currentPerson="";
+
+function handle(sel,name){
+  if(sel.value==="Seenu"){
+
+	window.open("https://youtu.be/dDouzRQ7a78","_blank");
+    <!-- window.open("https://www.youtube.com/","_blank");-->
+  }
+if(sel.value==="Nagarathna"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+if(sel.value==="Mytheli"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Pranav"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Meena"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Savitha"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Machi"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Suma"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Srinath"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Vikas"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Carissa"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Meera"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Gundu"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Veda"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Mukund"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Deepika"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Ajay"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Arjun"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Anjali"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Anita"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Mark"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Jayan"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Francis"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Hari"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Mayura"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Roopa"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Deepak"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Tanay"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Tanuja"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Ramya"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Parikshit"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Prateek"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Praneet"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Raksha"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Simha"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Ananya"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+  if(sel.value==="Puttu"){
+
+	window.open("https://youtu.be/wsqVt4McblQ","_blank");
+    <!-- window.open("https://www.youtube.com/","_blank");-->
+  }
+
+if(sel.value==="Sandhya"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Sreeya"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Sam"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Nikhil"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Varoon"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Shruthi"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Simhan"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Aditya"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Abhinav"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Nibha"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Madhu"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Dakshit"){
+    window.open("https://www.youtube.com/","_blank");
+  }
+
+
+if(sel.value==="Hoovishka"){
+    window.open("https://www.youtube.com/","_blank");
+  }  
+
+  if(sel.value==="bio"){
+    currentPerson=name;
+    bioBox.style.display="block";
+    bioTitle.innerText=name+"'s Autobiography";
+    bioContent.innerHTML=localStorage.getItem(name)||"";
+  }
+  sel.value="Select";
+}
+
+function saveBio(){
+  localStorage.setItem(currentPerson,bioContent.innerHTML);
+  alert("Saved");
+}
+
+function closeBio(){
+  bioBox.style.display="none";
+}
+</script>
+
+</body>
+</html>
